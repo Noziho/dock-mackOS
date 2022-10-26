@@ -16,7 +16,8 @@ nav {
 }
 
 nav > a > img {
-    width: 4rem;
-    height: 4rem;
+    margin-inline: 1rem;
+    width: 6rem;
+    height: 6rem;
     transition: 0.2s;
 }
