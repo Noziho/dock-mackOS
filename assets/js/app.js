@@ -1,46 +1,81 @@
-const submenu = document.querySelectorAll('div.submenu');
-const submenu1 = document.querySelector('#icon1');
-const submenu2 = document.querySelector('#icon2');
-const submenu3 = document.querySelector('#icon3');
-const submenu4 = document.querySelector('#icon4');
-const submenu5 = document.querySelector('#icon5');
-const submenu6 = document.querySelector('#icon6');
-const submenu7 = document.querySelector('#icon7');
-const submenu8 = document.querySelector('#icon8');
-const submenu9 = document.querySelector('#icon9');
-const submenu10 = document.querySelector('#icon10');
-const submenu11 = document.querySelector('#icon11');
-const submenu12 = document.querySelector('#icon12');
+const navbar = document.querySelector("nav");
+const arrayLogo = [
+        "/img/calendarIcon.png",
+        "/img/faceTimeICON.png",
+        "/img/downloadIcon.png",
+        "/img/folderIcon.ico",
+        "/img/mailIcon.png",
+        "/img/planIcon.svg",
+        "/img/messageIcon.svg.png",
+        "/img/photoIcon.png",
+        "/img/catIcon.jpg",
+        "/img/safariIcon.png",
+        "/img/settingsIcon.png",
+        "/img/githubIcon.png",
 
-function mouseOverEvents (elements) {
-    elements.forEach(function (element) {
-        element.addEventListener("mouseover", function () {
-            element.style.transform = "scale(1.3)";
-        })
-        element.addEventListener("mouseleave", function () {
-            element.style.transform = "scale(1)";
-        })
-    })
+    ];
+const arrayLink = [
+    "https://www.google.com",
+    "https://www.youtube.com",
+    "https://www.google.com",
+    "https://www.youtube.com",
+    "https://www.google.com",
+    "https://www.youtube.com",
+    "https://www.google.com",
+    "https://www.youtube.com",
+    "https://www.google.com",
+    "https://www.youtube.com",
+    "https://www.google.com",
+    "https://www.youtube.com"
+];
+const arrayInfo = [
+    "Infobulle 1",
+    "Infobulle 2",
+    "Infobulle 3",
+    "Infobulle 4",
+    "Infobulle 5",
+    "Infobulle 6",
+    "Infobulle 7",
+    "Infobulle 8",
+    "Infobulle 9",
+    "Infobulle 10",
+    "Infobulle 11",
+    "Infobulle 12",
+]
+
+
+let Logo = function (arrayLogo, arrayLink, arrayInfo) {
+    this.arrayLogo = arrayLogo;
+    this.arrayLink = arrayLink;
+    this.arrayInfo = arrayInfo;
+
+    this.iconCreation = function () {
+        for (let i = 0; i < this.arrayLogo.length && this.arrayLink.length && this.arrayInfo.length; i++) {
+            let a = document.createElement('a');
+            a.href = arrayLink[i];
+
+            let image = document.createElement("img");
+            image.src = arrayLogo[i];
+            image.title = arrayInfo[i];
+
+
+            image.addEventListener("mouseover", () => {
+                image.style.transform = "scale(1.3)";
+            })
+
+            image.addEventListener("mouseleave", () => {
+                setTimeout(() => {
+                    image.style.transform = "scale(1)";
+                },200)
+
+            })
+
+
+            navbar.append(a);
+            a.append(image);
+        }
+    }
 }
 
-function mouseClickLink (element, link) {
-
-    element.addEventListener("click", function () {
-            document.location = link;
-        });
-}
-
-mouseClickLink(submenu1, "https://google.fr");
-mouseClickLink(submenu2, "https://youtube.fr");
-mouseClickLink(submenu3, "https://twitter.com");
-mouseClickLink(submenu4, "https://twitch.fr");
-mouseClickLink(submenu5, "https://youtube.fr");
-mouseClickLink(submenu6, "https://youtube.fr");
-mouseClickLink(submenu7, "https://youtube.fr");
-mouseClickLink(submenu8, "https://youtube.fr");
-mouseClickLink(submenu9, "https://youtube.fr");
-mouseClickLink(submenu10, "https://youtube.fr");
-mouseClickLink(submenu11, "https://youtube.fr");
-mouseClickLink(submenu12, "https://youtube.fr");
-
-mouseOverEvents(submenu);
+let iconCreation = new Logo(arrayLogo, arrayLink, arrayInfo);
+iconCreation.iconCreation();
